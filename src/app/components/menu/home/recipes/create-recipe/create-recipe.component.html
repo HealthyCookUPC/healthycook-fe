@@ -1,0 +1,172 @@
+<div style="min-height: 90vh;" class="container">
+    <mat-card>
+        <mat-card-content>
+            <form autocomplete="off" *ngIf="showRecipeForm" [formGroup]="dataRecipe" (ngSubmit)="registerRecipe()">
+                <div class="form-title">
+                    <h3>Registra tu receta</h3>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" class="recipe-input">
+                        <mat-label>Nombre de la receta</mat-label>
+                        <input matInput #input formControlName="name">
+                        <mat-error *ngIf="dataRecipe.get('name').hasError('required') && 
+                                    dataRecipe.get('name').touched">Se debe de agregar el nombre de la receta
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" class="recipe-input">
+                        <mat-label>Descripción de la receta</mat-label>
+                        <textarea matInput #input rows="10" formControlName="description"></textarea>
+                        <mat-error *ngIf="dataRecipe.get('description').hasError('required') && 
+                                    dataRecipe.get('description').touched">Se debe de agregar la descripción de la
+                            receta</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" class="recipe-input">
+                        <mat-label>Preparación de la receta</mat-label>
+                        <textarea matInput #input rows="10" formControlName="preparation"></textarea>
+                        <mat-error *ngIf="dataRecipe.get('preparation').hasError('required') && 
+                                    dataRecipe.get('preparation').touched">Se debe de agregar la preparación de las
+                            recetas</mat-error>
+                    </mat-form-field>
+                </div>
+                <button mat-fab class="mr-0 ml-auto d-block" [ngStyle]="{'background-color': '#E74E00'}" type="submit"
+                    [disabled]="dataRecipe.invalid">
+                    <mat-icon>east</mat-icon>
+                </button>
+            </form>
+            <form *ngIf="showRecipeDetailsForm" autocomplete="off" [formGroup]="recipeDetails"
+                (ngSubmit)="registerRecipeDetails()">
+                <div class="form-title">
+                    <h3>Detalles de la receta</h3>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="fill" class="recipe-details-input">
+                                    <mat-label>Tiempo de preparación</mat-label>
+                                    <input matInput #input formControlName="preparationTime" type="number">
+                                    <mat-error *ngIf="recipeDetails.get('preparationTime').hasError('required') && 
+                                        recipeDetails.get('preparationTime').touched">Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="fill" class="recipe-details-input">
+                                    <mat-label>Periodo de tiempo</mat-label>
+                                    <mat-select formControlName="timePeriod">
+                                        <mat-option value="Minutos">Minutos</mat-option>
+                                        <mat-option value="Horas">Horas</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="recipeDetails.get('timePeriod').hasError('required') && 
+                                        recipeDetails.get('timePeriod').touched">Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="fill" class="recipe-details-input">
+                                    <mat-label>Porciones</mat-label>
+                                    <input matInput #input type="number" formControlName="servings">
+                                    <mat-error *ngIf="recipeDetails.get('servings').hasError('required') && 
+                                        recipeDetails.get('servings').touched">Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="fill" class="recipe-details-input">
+                                    <mat-label>Dificultad</mat-label>
+                                    <mat-select formControlName="difficulty">
+                                        <mat-option value="Facil">Facil</mat-option>
+                                        <mat-option value="Media">Media</mat-option>
+                                        <mat-option value="Dificil">Dificil</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="recipeDetails.get('difficulty').hasError('required') && 
+                                        recipeDetails.get('difficulty').touched">Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="fill" class="recipe-details-input">
+                                    <mat-label>Calorías</mat-label>
+                                    <input matInput #input type="number" formControlName="calories">
+                                    <mat-error *ngIf="recipeDetails.get('calories').hasError('required') && 
+                                        recipeDetails.get('calories').touched">Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="fill" class="recipe-details-input">
+                                    <mat-label>Enlace a video</mat-label>
+                                    <input matInput #input type="url" formControlName="recipeVideoURL">
+                                    <mat-hint>Puede ser opcional</mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div formGroupName="recipeIngredients">
+                            <div class="row">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Tipo de ingrediente</mat-label>
+                                    <input matInput #input type="text" formControlName="ingredientNameType">
+                                </mat-form-field>
+                            </div>
+                            <div formArrayName="ingredientsList"
+                                *ngFor="let item of getIngredients.controls; let i = index;">
+                                <div [formGroupName]="i">
+                                    <div class="row">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Nombre de ingrediente</mat-label>
+                                            <input matInput #input type="text" formControlName="ingredientName">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <mat-form-field appearance="fill" class="recipe-details-input">
+                                                <mat-label>Cantidad</mat-label>
+                                                <input matInput #input type="number" formControlName="quantity">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col">
+                                            <mat-form-field appearance="fill" class="recipe-details-input">
+                                                <mat-label>Unidad de medición</mat-label>
+                                                <mat-select formControlName="unity">
+                                                    <mat-option value="Unidades">Unidades</mat-option>
+                                                    <mat-option value="Cucharadas">Cucharadas</mat-option>
+                                                    <mat-option value="Mililitros">Mililitros</mat-option>
+                                                    <mat-option value="Onzas">Onzas</mat-option>
+                                                    <mat-option value="Gramos">Gramos</mat-option>
+                                                    <mat-option value="Kilogramos">Kilogramos</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button mat-fab class="mr-0 ml-auto d-block" [ngStyle]="{'background-color': '#E74E00'}"
+                            (click)="addIngredient()" #tooltip="matTooltip" matTooltip="Agregar ingrediente" type="button">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <button mat-raised-button class="mr-0 ml-auto d-block mt-3" [ngStyle]="{'background-color': '#E74E00', 'color': '#FFFFFF'}"
+                            (click)="addIngredientTypeList()" type="button">Agregar tipos ingredientes </button>
+                        </div>
+
+                        <h3>Lista Ingredientes</h3>
+                        <hr>
+                        <ul *ngFor="let item of ingredientTypesNames; let i = index">
+                            <li>{{ ingredientTypesNames[i] }}</li>
+                        </ul>
+                        <button mat-raised-button class="mr-0 ml-auto d-block" [ngStyle]="{'background-color': '#E74E00'}"
+                            type="submit" [disabled]="ingredientTypesNames.length < 1 || recipeDetails.invalid" >
+                            Publicar receta
+                        </button>
+                    </div>
+                </div>
+                <!-- <button mat-raised-button class="mr-0 ml-auto d-block btn-finished" type="submit">Finalizar</button> -->
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
