@@ -162,12 +162,13 @@
 }
 
 .btn-recipe-search {
-    background-color: #E74E00;
+    background-color: #e79e00;
     color: #FFFFFF;
     width: 15rem;
     padding-left: 2rem !important;
     border-radius: 1.875rem;
     font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .recipes-card {
@@ -211,7 +212,7 @@
     display: block;
     width: 150px;
     height: 150px;
-    margin-top: 0;    
+    margin-top: 0;
     border: .25rem solid #E4E4E4;
 }
 .bottom-container {
@@ -227,7 +228,7 @@
 
 .btn-view_recipe{
     color: #FFFFFF;
-    background-color: #E74E00;
+    background-color: #e79e00;
 }
 .error-message{
     text-align: center;
@@ -237,7 +238,7 @@
 }
 .btn-create {
     margin-top: .5rem;
-    background-color: #E74E00;
+    background-color: #e79e00;
     color: #FFF;
 }
 .five-recipes-title{
