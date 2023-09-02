@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col">
             <div class="recipe-container">
-                <span>{{ recipe['user']?.username }}</span>
-                <h2>{{ recipe['name'] }}</h2>
+                <span>{{ recipe['username'] }}</span>
+                <h2>{{ recipe['recipeName'] }}</h2>
                 <div class="recipe-container-border"></div>
                 <div class="recipe-stats">
                     <div class="row">
@@ -33,25 +33,25 @@
                 </div>
             </div>
             <div class="recipe-description-container">
-                <p> {{ recipe['description'] }}</p>
+                <p> {{ recipe['recipeDescription'] }}</p>
             </div>
             <div class="recipe-details-container">
                 <div class="row">
                     <div class="col-auto recipe-details">
                         <h4>Dificultad</h4>
-                        <span> {{ recipeDetails['difficulty'] }}</span>
+                        <span> {{ recipe['difficulty'] }}</span>
                     </div>
                     <div class="col-auto recipe-details">
                         <h4>Porciones</h4>
-                        <span> {{ recipeDetails['servings'] }}</span>
+                        <span> {{ recipe['diners'] }}</span>
                     </div>
                     <div class="col-auto recipe-details">
                         <h4>Tiempo de preparación</h4>
-                        <span> {{ recipeDetails['preparationTime'] }} {{ recipeDetails['timePeriod'] }}</span>
+                        <span> {{ recipe['preparationTime'] }} minutos</span>
                     </div>
                     <div class="col-auto recipe-details">
                         <h4>Calorias</h4>
-                        <span> {{ recipeDetails['calories'] }} Cal</span>
+                        <span> 0 Cal</span>
                     </div>
                 </div>
             </div>
@@ -61,23 +61,25 @@
             <div class="recipe-tabs-container">
                 <mat-tab-group>
                     <mat-tab label="Preparación">
-                        <p class="mat-tab-contain">{{ recipe['preparation'] }}</p>
+                        <div class="mat-tab-contain">
+                            <div *ngFor="let step of recipe['recipeSteps']; let i = index;">
+                                <ul>
+                                    <li>
+                                        <b>{{ step['stepNumber'] }})</b> {{ step['stepDescription'] }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </mat-tab>
                     <mat-tab label="Ingredientes">
                         <div class="mat-tab-contain">
-                            <div *ngFor="let typeOfIngredient of recipeDetails['ingredientTypes']; let i = index">
-                                <!-- {{ typeOfIngredient.name }} -->
-                                <div
-                                    *ngFor="let ingredients of recipeDetails['ingredientTypes'][i]['ingredientsList']; let j = index;">
-                                    <ul>
-                                        <li>
-                                            {{ ingredients.quantity }} {{ ingredients.unit }} de {{ ingredients.name }}
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div *ngFor="let ingredients of recipe['ingredients']; let i = index;">
+                                <ul>
+                                    <li>
+                                        {{ ingredients['ingredient'] }}
+                                    </li>
+                                </ul>
                             </div>
-
-
                         </div>
                     </mat-tab>
                 </mat-tab-group>

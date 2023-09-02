@@ -22,7 +22,7 @@ export class RecipeService {
   }
 
   GetRecipeByID(recipeID: number): Observable<any> {
-    return this.http.get(this.myAppUrl + this.myApiUrl + recipeID)
+    return this.http.get(this.myAppUrl + this.myApiUrl + `findRecipeById/${recipeID}`)
   }
   ChangePublicationStatus(recipeID:number):Observable<any>{
     return this.http.put(this.myAppUrl + this.myApiUrl + 'ChangePublicationStatus/' + recipeID,true)
@@ -37,9 +37,9 @@ export class RecipeService {
     return this.http.get(this.myAppUrl + this.myApiUrl + 'getLastFiveRecipes')
   }
   getListRecipes(): Observable<any> {
-    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetListRecipes');
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'getRecipes');
   }
-
+  
   GetListRecipesPublishedByUser(userID:number): Observable<any>{
     return this.http.get(this.myAppUrl + this.myApiUrl + 'findRecipesByUser/' + userID)
   }

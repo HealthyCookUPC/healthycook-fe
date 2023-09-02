@@ -35,15 +35,15 @@ export class RecipesComponent implements OnInit {
   getListRecipesVerified():void{
     this.recipeService.getListRecipes().subscribe(data => {
       this.recipesListPublished = data;
-      // console.log(this.recipesListPublished);
+      console.log(this.recipesListPublished);
       console.log(data)
-      for (let index = 0; index < data.length; index++) {
-        this.recipesID.push(data[index].id)
-        this.recipeDetailsService.GetRecipeDetails(data[index].id).subscribe(data => {
-          this.recipesDetails.push(data)
-          // console.log(this.recipesDetails)
-        })
-      }
+      // for (let index = 0; index < data.length; index++) {
+      //   this.recipesID.push(data[index].id)
+      //   this.recipeDetailsService.GetRecipeDetails(data[index].id).subscribe(data => {
+      //     this.recipesDetails.push(data)
+      //     // console.log(this.recipesDetails)
+      //   })
+      // }
       // console.log(this.recipesID)
     })
   }

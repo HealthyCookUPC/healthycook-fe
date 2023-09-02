@@ -39,14 +39,14 @@
             <div class="row" *ngIf="recipesListPublished.length > 0; else notShowRecipes">
                 <div class="col-sm-4" *ngFor="let item of recipesListPublished; let i = index;">
                     <mat-card class="recipe-card">
-                        <mat-card-subtitle>{{ recipesListPublished[i]['user'].username }}</mat-card-subtitle>
-                        <mat-card-title>{{ recipesListPublished[i].name }}</mat-card-title>
+                        <mat-card-subtitle>{{ recipesListPublished[i]['username'] }}</mat-card-subtitle>
+                        <mat-card-title>{{ recipesListPublished[i]['recipeName'] }}</mat-card-title>
                         <mat-card-content>
-                            <p>{{ recipesListPublished[i].description }}</p>
+                            <p>{{ recipesListPublished[i]['recipeDescription'] }}</p>
                             <!-- {{ recipesDetails[i]?.calories }} -->
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button class="btn-recipe-card" routerLink="view-recipe/{{ recipesListPublished[i].id }}">Ver receta</button>
+                            <button mat-button class="btn-recipe-card" routerLink="view-recipe/{{ recipesListPublished[i]['recipeId'] }}">Ver receta</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>

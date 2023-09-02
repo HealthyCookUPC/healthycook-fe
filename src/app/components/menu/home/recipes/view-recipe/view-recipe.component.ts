@@ -66,6 +66,7 @@ export class ViewRecipeComponent implements OnInit {
   }
   getRecipe(): void {
     this.recipeService.GetRecipeByID(this.recipeID).subscribe(data => {
+      console.log(data)
       this.recipeName = data['name']
       console.log(this.recipeName)
       this.recipe = data
