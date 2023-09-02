@@ -180,22 +180,32 @@
 .recipes-card-content{
     padding-top: 7rem;
 }
+
+
 .recipes-card-header{
     text-align: center;
 }
+
+
 .recipes-card-header h3{
     font-weight: 700;
     font-size: 1.25rem;
     margin: 0;
 }
+
+
 .recipes-card-header p{
     margin-bottom: .5rem;
     color: #857F7F;
 }
+
+
 .recipes-card-header span{
     font-weight: 300;
     color: #857F7F;
 }
+
+
 .recipes-card span{
     display: block;
     width: 150px;
@@ -206,14 +216,25 @@
 .recipes-card-details-title{
     font-weight: 700;
 }
+
+
+
+
+
+
+
+
 .recipe-photo {
     border-radius: 50%;
     display: block;
     width: 150px;
     height: 150px;
-    margin-top: 0;    
+    margin-top: 0;
     border: .25rem solid #E4E4E4;
 }
+
+
+
 .bottom-container {
     position: relative;
     z-index: -10;
@@ -229,6 +250,8 @@
     color: #FFFFFF;
     background-color: #E74E00;
 }
+
+
 .error-message{
     text-align: center;
     font-size: 1.25rem;
@@ -240,6 +263,8 @@
     background-color: #E74E00;
     color: #FFF;
 }
+
+
 .five-recipes-title{
     font-family: 'Oxygen', sans-serif;
     text-align: center;
