@@ -17,8 +17,8 @@ export class RecipeService {
     this.myAppUrl = environment.endpoint;
     this.myApiUrl =  '/api/recipe/';
    }
-   saveRecipe(recipe: Recipe): Observable<any> {
-    return this.http.post(this.myAppUrl + this.myApiUrl, recipe);
+   saveRecipe(body: Object): Observable<any> {
+    return this.http.post(this.myAppUrl + this.myApiUrl + 'createRecipe', body);
   }
 
   GetRecipeByID(recipeID: number): Observable<any> {
