@@ -3,6 +3,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { RecipesSavedService } from 'src/app/services/recipes-saved.service';
+import {LoginDialogComponent} from "./account/login-dialog/login-dialog.component";
+import {RegisterDialogComponent} from "./account/register-dialog/register-dialog.component";
 
 @Component({
   selector: 'app-menu',
@@ -13,6 +15,8 @@ export class MenuComponent implements OnInit {
   mobileQuery: MediaQueryList;
   recipesSaved: any[] = []
   recipesName: any[] = []
+  isMenuOpen = true;
+
   private _mobileQueryListener: () => void;
   constructor(changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher, public dialog: MatDialog,
@@ -33,7 +37,7 @@ export class MenuComponent implements OnInit {
         this.recipeService.GetRecipeByID(this.recipesSaved[i].recipeSavedID).subscribe(data => {
           this.recipesName.push(data?.name)
         })
-        
+
       }
     })
   }
@@ -43,5 +47,22 @@ export class MenuComponent implements OnInit {
   closeDialog() {
     const dialogRef = this.dialog.closeAll();
   }
+
+  openLoginDialog() {
+    const dialogRef = this.dialog.open(LoginDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`); // resultado cuando se cierra
+    });
+  }
+  openRegisterDialog() {
+    const dialogRef = this.dialog.open(RegisterDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`); // resultado cuando se cierra
+    });
+  }
+
+
 
 }

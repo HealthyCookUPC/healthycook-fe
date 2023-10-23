@@ -124,7 +124,7 @@
                                 <mat-form-field appearance="outline" class="recipe-input">
                                     <mat-label>Nombre del ingrediente</mat-label>
                                     <input matInput #input formControlName="excludedIngredient">
-                                    <mat-error *ngIf="dataExcludedIngredient.get('excludedIngredient').hasError('required') && 
+                                    <mat-error *ngIf="dataExcludedIngredient.get('excludedIngredient').hasError('required') &&
                                     dataExcludedIngredient.get('excludedIngredient').touched">Debes agregar un
                                         ingrediente</mat-error>
                                 </mat-form-field>

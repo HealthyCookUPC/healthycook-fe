@@ -16,6 +16,8 @@ import { CreateRecipeComponent } from './components/menu/home/recipes/create-rec
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RecipesFoundComponent } from './components/menu/home/recipes/recipes-found/recipes-found.component';
+import { LoginDialogComponent } from './components/menu/account/login-dialog/login-dialog.component';
+import { RegisterDialogComponent } from './components/menu/account/register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { RecipesFoundComponent } from './components/menu/home/recipes/recipes-fo
     ViewRecipeComponent,
     CreateRecipeComponent,
     ProfileComponent,
-    RecipesFoundComponent
+    RecipesFoundComponent,
+    LoginDialogComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,
