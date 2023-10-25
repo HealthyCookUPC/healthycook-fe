@@ -36,7 +36,7 @@ export class LoginDialogComponent implements OnInit {
 
   onSubmit(form: Login) {
     const loginForm = {
-      username:this.loginForm.value.user.toUpperCase(),
+      username:this.loginForm.value.user,
       password:this.loginForm.value.pass
     };
 
